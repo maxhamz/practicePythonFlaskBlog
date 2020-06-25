@@ -23,11 +23,11 @@ class User(db.Model, UserMixin):
     posts = db.relationship('Post', backref='author', lazy=True)
 
 
-    # constructor
-    def __init__(self, username, email, password):
-        self.username = username
-        self.email = email
-        self.password = password
+    # # constructor
+    # def __init__(self, username, email, password):
+    #     self.username = username
+    #     self.email = email
+    #     self.password = password
 
 
     def get_reset_token(self, expires_sec=1800):
@@ -57,10 +57,11 @@ class Post(db.Model):
     content = db.Column(db.Text, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
-    # constructor
-    def __init__ (self, title, content):
-        self.title = title
-        self.content = content
+    # # constructor
+    # def __init__ (self, title, content):
+    #     self.title = title
+    #     self.content = content
+    #     # self.user_id = user_id
 
     def __repr__(self):
         return f"Post('{self.title}', '{self.date_posted}')"

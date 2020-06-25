@@ -13,8 +13,16 @@ posts = Blueprint('posts', __name__)
 @login_required
 def new_post():
     form = PostForm()
+    print("NEW POST", "\n")
     if form.validate_on_submit():
+        print("what's all params?")
+        print("Title : ", form.title.data, "\n")
+        print("Content : ", form.content.data, "\n")
+        print("Author : ", current_user, "\n")
+        
         post = Post(title=form.title.data, content=form.content.data, author=current_user)
+        print("RESULT", "\n")
+        print(post)
         db.session.add(post)
         db.session.commit()
         flash('Your post has been created!', 'success')
